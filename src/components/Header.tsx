@@ -1,22 +1,42 @@
-import Link from "next/link";
+const navItems = [
+  { key: "About", href: "#about" },
+  { key: "Experience", href: "#experience" },
+  { key: "Education", href: "#education" },
+  { key: "Projects", href: "#projects" },
+];
 
-const Header = () => {
-  return (
-    <header className="flex justify-between items-center py-6 px-8 bg-gradient-to-r from-[#121f28] via-zinc-950 to-[#472f33]">
-      <h1 className="text-xl font-bold text-white">BevisDev</h1>
-      <nav className="space-x-6">
-        <Link href="#about" className="text-gray-300 hover:text-white">
-          About
-        </Link>
-        <Link href="#projects" className="text-gray-300 hover:text-white">
-          Projects
-        </Link>
-        <Link href="#contact" className="text-gray-300 hover:text-white">
-          Contact
-        </Link>
-      </nav>
-    </header>
-  );
+type HeaderProps = {
+  onChange: (key: string) => void;
+  active: string;
 };
 
-export default Header;
+export default function Header({ onChange, active }: HeaderProps) {
+  return (
+    <nav
+      className="pointer-events-auto bg-white/10 text-sm md:text-base fixed px-6 py-3 max-w-lg 
+    rounded-2xl border border-white/20 shadow-xl bg-opacity-70 backdrop-blur space-x-6"
+    >
+      {navItems.map((item) => {
+        const isActive = active === item.key;
+        return (
+          <button
+            key={item.key}
+            onClick={() => onChange(item.key)}
+            className={`relative select-none pb-1 ${
+              isActive ? "font-bold" : "opacity-70 hover:opacity-100"
+            }`}
+          >
+            {item.key}
+
+            {/* Hiệu ứng shimmer khi tab active */}
+            {isActive && (
+              <span className="absolute top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden">
+                <span className="absolute top-0 h-full w-1 bg-white/30 animate-shimmer" />
+              </span>
+            )}
+          </button>
+        );
+      })}
+    </nav>
+  );
+}

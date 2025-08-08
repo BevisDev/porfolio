@@ -17,7 +17,6 @@ const Skills = () => {
             {skill}
           </span>
         ))}
-        {/* Lặp lại để tạo hiệu ứng vô tận */}
         {skills.map((skill, i) => (
           <span key={`repeat-${i}`} className="inline-block">
             {skill}
