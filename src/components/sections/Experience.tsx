@@ -1,38 +1,39 @@
+const works = [
+  {
+    title: "CIB on the Mobile",
+    desc: "Take your bank wherever you go for amazing experience.",
+  },
+  {
+    title: "CIB on the Mobile",
+    desc: "Take your bank wherever you go for amazing experience.",
+  },
+  {
+    title: "CIB on the Mobile",
+    desc: "Take your bank wherever you go for amazing experience.",
+  },
+  {
+    title: "CIB on the Mobile",
+    desc: "Take your bank wherever you go for amazing experience.",
+  },
+];
+
 export default function Experience() {
   return (
-    <section
-      id="experience"
-      className="px-8 md:px-32 py-20 bg-[#112240] text-gray-300"
-    >
-      <h2 className="text-3xl font-bold text-white mb-8">Experience</h2>
-
-      <div className="space-y-8">
-        <div>
-          <h3 className="text-xl font-semibold text-white">
-            Senior Frontend Developer @ ABC Corp
-          </h3>
-          <p className="text-sm text-gray-400 mb-2">Jan 2022 - Present</p>
-          <ul className="list-disc list-inside space-y-2 text-gray-400">
-            <li>Build and maintain web apps using React and Next.js.</li>
-            <li>
-              Lead UI/UX improvements for better accessibility and performance.
-            </li>
-            <li>Work closely with backend team to design scalable APIs.</li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="text-xl font-semibold text-white">
-            Frontend Engineer @ XYZ Studio
-          </h3>
-          <p className="text-sm text-gray-400 mb-2">2019 - 2021</p>
-          <ul className="list-disc list-inside space-y-2 text-gray-400">
-            <li>Developed responsive websites using React and Tailwind CSS.</li>
-            <li>
-              Collaborated with designers to create interactive UI components.
-            </li>
-          </ul>
-        </div>
+    <section className="px-8 md:px-20 py-16">
+      <h2 className="text-2xl font-bold mb-10">Work Experience</h2>
+      <div className="grid md:grid-cols-2 gap-6">
+        {works.map((work, i) => (
+          <div
+            key={i}
+            className="bg-gradient-to-r from-purple-800/40 to-purple-600/30 rounded-xl p-6 shadow-lg hover:scale-105 transition-transform"
+          >
+            <h3 className="text-xl font-semibold mb-2">{work.title}</h3>
+            <p className="text-gray-300">{work.desc}</p>
+            <button className="mt-4 px-4 py-2 bg-purple-600 rounded-lg text-white hover:bg-purple-500">
+              Learn More
+            </button>
+          </div>
+        ))}
       </div>
     </section>
   );
